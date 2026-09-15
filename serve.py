@@ -20,7 +20,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 class CleanURLHandler(SimpleHTTPRequestHandler):
     def translate_path(self, path):
         local = super().translate_path(path)
-        if not os.path.exists(local) and not local.endswith(".html"):
+        if not local.endswith(".html"):
             candidate = local.rstrip("/") + ".html"
             if os.path.isfile(candidate):
                 return candidate
